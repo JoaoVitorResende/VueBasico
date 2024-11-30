@@ -10,22 +10,27 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <div id="app">
-        <img :src="srcImage" :title="titleImg">
-        <hr>
-        <a :href="url">git</a>
-        <hr>
-        <p v-text="textPar"></p>
-        <hr>
-        <div v-html="textPar"></div>
+        <input type="text" v-model="textoDigitado">
+        <br>
+        <div v-if="textoDigitado == 1">
+            <img :src="srcImage1" :title="titleImg" width="100px">
+        </div>
+        <div v-else-if="textoDigitado == 2">
+            <img :src="srcImage2" :title="titleImg" width="100px">
+        </div>
+        <div v-else="textoDigitado == 3">
+            <img :src="srcImage3" :title="titleImg" width="100px">
+        </div>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                srcImage: "logo.png",
+                textoDigitado: '',
+                srcImage1: "logo.png",
+                srcImage2: "logo2.jpg",
+                srcImage3: "logo3.jpg",
                 titleImg: "logo",
-                url: "https://github.com/",
-                textPar: '<b>teste<b/> <br> qualquer'
             }
         })
     </script>
