@@ -10,20 +10,24 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <div id="app">
-        <form v-on:submit.prevent="AlteraEscrita('sobrenome')">
-            <input v-model="textoDigitado" type="text" />
-            <button type="submit">Add</button>
-        </form>
+        <input v-model="textoDigitado" type="text" v-on:keyup.enter="AlteraEscrita('teste2')" />
+        <ul>
+            <li v-for="item in array">
+                {{item}}
+            </li>
+        </ul>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
                 textoDigitado: "",
+                array: []
             },
             methods: {
                 AlteraEscrita(sobrenome) {
-                    this.textoDigitado = sobrenome
+                    this.array.push(this.textoDigitado);
+                    this.textoDigitado = '';
                 }
             }
         })
