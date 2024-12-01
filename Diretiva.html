@@ -12,7 +12,7 @@
     <div id="app">
         <input v-model="textoDigitado" type="text" v-on:keyup.enter="AlteraEscrita('teste2')" />
         <ul>
-            <li v-for="item in array">
+            <li v-for="item in array" @click="Alerta($event)">
                 {{item}}
             </li>
         </ul>
@@ -28,6 +28,14 @@
                 AlteraEscrita(sobrenome) {
                     this.array.push(this.textoDigitado);
                     this.textoDigitado = '';
+                },
+                Alerta(event) {
+                    element = event.target;
+                    if (element.style.background == "white")
+                        event.target.style = "Background: red";
+                    else
+                        event.target.style = "Background: white";
+                    //alert(event.target.textContent.trim())
                 }
             }
         })
