@@ -16,13 +16,45 @@
                 {{item}}
             </li>
         </ul>
+
+        <input @click="CorP($event.target.value)" type="radio" name="cor" value="red" checked>
+        red
+        <input @click="CorP($event.target.value)" type="radio" name="cor" value="green">
+        green
+        <input @click="CorP($event.target.value)" type="radio" name="cor" value="blue">
+        blue
+        <input @click="CorP($event.target.value)" type="radio" name="cor" value="yellow">
+        yellow
+        <p v-bind:class="classParagrafo">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore placeat quae perferendis natus quo
+            laboriosam unde dolores, quod incidunt, ipsum quam labore exercitationem illo molestias iste, eos ab fuga
+            hic.
+        </p>
     </div>
+    <style>
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
     <script>
         new Vue({
             el: '#app',
             data: {
                 textoDigitado: "",
-                array: []
+                array: [],
+                classParagrafo: "red"
             },
             methods: {
                 AlteraEscrita(sobrenome) {
@@ -36,6 +68,9 @@
                     else
                         event.target.style = "Background: white";
                     //alert(event.target.textContent.trim())
+                },
+                CorP(cor) {
+                    this.classParagrafo = cor;
                 }
             }
         })
